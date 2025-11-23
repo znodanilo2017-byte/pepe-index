@@ -1,19 +1,17 @@
 ```mermaid
 graph TD
     subgraph "External"
-        User[👤 User / Trading Bot]
-        CG[🦎 CoinGecko API]
+        User[User / Trading Bot]
+        CG[CoinGecko API]
     end
 
     subgraph "AWS Cloud (eu-central-1)"
-        EB[⏰ EventBridge] -->|Trigger Every 1h| Lambda
-        
-        User -->|HTTPS Request| FURL[🌐 Function URL]
-        FURL -->|Invoke| Lambda[AWS Lambda(Docker/Python)]
-        
+        EB[EventBridge] -->|Trigger Every 1h| Lambda
+        User -->|HTTPS Request| FURL[Function URL]
+        FURL -->|Invoke| Lambda[AWS Lambda Docker Python]
         Lambda -->|1. Fetch Price| CG
-        Lambda -->|2. Calc Volatility| Lambda
-        Lambda -->|3. Store History| DDB[(DynamoDB History Table)]    
+        Lambda -->|2. Calculate Volatility| Lambda
+        Lambda -->|3. Store History| DDB[DynamoDB History Table]
         Lambda -->|4. Return JSON| FURL
     end
 
