@@ -9,12 +9,11 @@ graph TD
         EB[⏰ EventBridge] -->|Trigger Every 1h| Lambda
         
         User -->|HTTPS Request| FURL[🌐 Function URL]
-        FURL -->|Invoke| Lambda[λ AWS Lambda\n(Docker/Python)]
+        FURL -->|Invoke| Lambda[AWS Lambda(Docker/Python)]
         
         Lambda -->|1. Fetch Price| CG
         Lambda -->|2. Calc Volatility| Lambda
-        Lambda -->|3. Store History| DDB[(DynamoDB\nHistory Table)]
-        
+        Lambda -->|3. Store History| DDB[(DynamoDB History Table)]    
         Lambda -->|4. Return JSON| FURL
     end
 

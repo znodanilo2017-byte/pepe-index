@@ -88,3 +88,25 @@ resource "aws_dynamodb_table" "meme_history" {
     type = "S"
   }
 }
+# 1. The Clock (Run every 1 hour)
+resource "aws_cloudwatch_event_rule" "every_hour" {
+  name                = "meme-index-hourly-trigger"
+  description         = "Triggers the Meme Index lambda every hour"
+  schedule_expression = "rate(1 hour)"
+}
+
+# 2. The Target (Point the clock at the Lambda)
+resource "aws_cloudwatch_event_target" "trigger_lambda" {
+  rule      = aws_cloudwatch_event_rule.every_hour.name
+  target_id = "meme_index_target"
+  arn       = aws_lambda_function.meme_index.arn
+}
+
+# 3. The Permission (Let the clock invoke the function)
+resource "aws_lambda_permission" "allow_cloudwatch" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.meme_index.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.every_hour.arn
+}
