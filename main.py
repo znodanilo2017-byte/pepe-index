@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 COIN_ID = os.getenv('COIN_ID', 'pepe') 
 CURRENCY = 'usd'
 DAYS = '30'
-CACHE_DURATION_MINUTES = 5
+CACHE_DURATION_MINUTES = 10
 
 # GLOBAL CACHE (Persists while Lambda container is warm)
 _CACHE = {
