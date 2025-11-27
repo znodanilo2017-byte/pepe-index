@@ -3,8 +3,8 @@
 ![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)
 ![Tech](https://img.shields.io/badge/Stack-Terraform%20%7C%20AWS%20%7C%20Docker-blue)
 
-**Live API Endpoint:** *Add your Lambda Function URL here*  
-**Dashboard:** *Optional — remove if not used*
+**Live API Endpoint:** *[Lambda Function URL](https://g6r2etqn5hygjhv4lpohro46mu0ibzfd.lambda-url.eu-central-1.on.aws/)*  
+**Dashboard:** *[Dashboard Link](https://pepe-index.streamlit.app)*
 
 ---
 
@@ -87,7 +87,7 @@ graph TD
 
 ⸻
 
-## 🧪 Local Development
+# 🧪 Local Development
 
 Prerequisites
 	•	Docker
@@ -96,13 +96,13 @@ Prerequisites
 
 1. Clone & Test the Docker Image
 
-git clone https://github.com/YOUR_USERNAME/meme-index-legacy.git
-cd meme-index-legacy
+git clone https://github.com/znodanilo2017-byte/pepe-index.git
+cd pepe-index
 
-# Build
+## Build
 docker build -t meme-index .
 
-# Run Lambda emulator
+## Run Lambda emulator
 docker run -p 9000:8080 meme-index
 
 2. Deploy Cloud Resources
