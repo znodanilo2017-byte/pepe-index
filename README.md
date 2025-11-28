@@ -81,9 +81,6 @@ graph TD
 
 ![Application View](./PepeApp.png)
 
-⸻
-
-**Cost to Run:** ~\$0/month (AWS Free Tier; real usage during development was only ~\$0.20 over 2–3 days).
 
 ⸻
 
